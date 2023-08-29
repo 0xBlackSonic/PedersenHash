@@ -23,7 +23,7 @@ $r = 736030358979909402780800718157159386076813972158567259200215660948447373041
 is a prime number. Denotate by $\mathbb{G}$ the subgroup of points of orger $r$, that is,
 
 $$
-\mathbb{G} = {P \in E(\mathbb{F_p}) \mid rP = O}
+\mathbb{G} = {P \in E(\mathbb{F}_p) \mid rP = O}
 $$
 
 $E_m$ is birationally equivalent to the Edwards elliptic curve
