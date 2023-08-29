@@ -34,11 +34,11 @@ template BasisGenerator() {
             base[k][i].in[1] <== k == 0 ? basis[k][i][1] : base[k - 1][i].out[1];
         }
 
-        for (var k = 1; k < 8; k++) {
+        for (var k = 0; k < 8; k++) {
             if (k == 1 || k == 3 || k == 7) {
                 basis[k][i][0] <== base[k \ 3][i].out[0];
                 basis[k][i][1] <== base[k \ 3][i].out[1];
-            } else {
+            } else if (k == 2 || k == 4 || k == 5 || k == 6) {
                 adders[k][i] = MontgomeryAdd();
                 adders[k][i].in1[0] <== basis[0][i][0];
                 adders[k][i].in1[1] <== basis[0][i][1];
@@ -48,16 +48,12 @@ template BasisGenerator() {
                 basis[k][i][0] <== adders[k][i].out[0];
                 basis[k][i][1] <== adders[k][i].out[1];
             }
+
+            oPoints[k][i][0] <== basis[k][i][0];
+            oPoints[k][i][1] <== basis[k][i][1];
         }
 
         basis[0][i + 1][0] <== base[4][i].out[0];
         basis[0][i + 1][1] <== base[4][i].out[1];
-    }
-
-    for (var i = 0; i < 50; i++) {
-        for (var j = 0; j < 8; j++) {
-            oPoints[j][i][0] <== basis[j][i][0];
-            oPoints[j][i][1] <== basis[j][i][1];
-        }
     }
 }

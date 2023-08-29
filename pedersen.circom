@@ -7,7 +7,7 @@ include "./utils/basisGenerator.circom";
 template Pedersen(n) {
     /*
         For testing purpose we only use 4 base coords from 
-        Idem3's Pedersen circom template implementation
+        Iden3's Pedersen circom template implementation
     */
     var BASE[4][2] = [
         [10457101036533406547632367118273992217979173478358440826365724437999023779287,19824078218392094440610104313265183977899662750282163392862422243483260492317],
