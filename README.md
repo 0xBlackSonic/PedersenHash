@@ -109,7 +109,7 @@ $$
 \langle M_i \rangle P_i = enc(m_0) P_i \quad + \quad enc(m_1) 2^5P_i \quad + \quad enc(m_2) 2^{10}P_i \quad + \quad...
 $$
 
-$\langle M_i \rangle determines how many times a basis point $P_i$ will be added to itself or substract depending on the sign of the coefficient.
+$\langle M_i \rangle$ determines how many times a basis point $P_i$ will be added to itself or substract depending on the sign of the coefficient.
 
 We do this for each segment to reach the final point summing them all together.
 
