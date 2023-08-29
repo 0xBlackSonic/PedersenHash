@@ -2,7 +2,7 @@
 
 The Pedersen Hash Function provides a way to map fixed size tuples of elements from modular arithmetic onto elements of finit cyclic groups in such a way that discrete log relations between images are avoidable.
 
-It's a bitwise hashig function that maps a sequence of bits to a compressed point on an elliptic curve. It's primarily used with arithmatic circuits of zero knowledge proof.
+It's a bitwise hashig function that maps a sequence of bits to a compressed point on an elliptic curve. It's primarily used with arithmetic circuits of zero knowledge proof.
 
 ## Elliptic Curve
 
@@ -20,7 +20,7 @@ The order of $E_m$ is $n=8 \times r$, where
 
 $r = 736030358979909402780800718157159386076813972158567259200215660948447373041$
 
-is a prime number. Denotate by $\mathbb{G}$ the subgroup of points of orger $r$, that is,
+is a prime number. Denotate by $\mathbb{G}$ the subgroup of points of order $r$, that is,
 
 $$
 \mathbb{G} = {P \in E(\mathbb{F}_p) \mid rP = O}
@@ -34,7 +34,7 @@ $$
 
 where $d=9706598848417545097372247223557719406784115219466060233080913168975159366771$
 
-Both decribe the same mathematical structure, but performing mathematical operations the addition is easier in the Montgomery form, but the memebers of this curves have a one to one correspondence between each other.
+Both decribe the same mathematical structure, but performing mathematical operations the addition is easier in the Montgomery form, and the memebers of this curves have a one to one correspondence between each other.
 
 The translation map how to correspond to the points on this two curves is:
 
@@ -52,7 +52,7 @@ To hash a sequence of bits $M$ to a geometric object first of all it's needed to
 
 - $P_0, P_1, ..., P_k$ be uniformly sampled generators of $\mathbb{G}$ (for some specified integer $k$).
 
-The bits are processed as, you have an input $M$, which is a sequence of bits, split into segments of 200 bits and each of those segments $M_i$ into 4 bits windows. Each basis point is used to processes one segment.
+The bits are processed as: we have an input $M$, which is a sequence of bits, split into segments of 200 bits and each of those segments $M_i$ into 4 bits windows. Each basis point is used to processes one segment.
 
 $$
 M = M_0M_1...M_l \quad \text{where} \quad M_i=m_0m_1...m_k \quad \text{with} \quad
@@ -64,17 +64,17 @@ $$
 
 Let's just consider one segment $M_i$ of 200 bits sequence.
 
-The way to reach the final hashed point is depending on the sequence of bits that are coming in, must be decided how many times are going to add this basis points to itself. Because the addition operation obscure the number of times that operation is performed so it will obscure the information that is the bits that are coming in.
+The way to reach the final hashed point is depending on the sequence of bits that are coming in, must be decided how many times we are going to add this basis points to itself. Because the addition operation obscure the number of times that operation is performed so it will obscure the information.
 
 <div align="center">
 <img src="images/img-01.png" width="700"/>
 </div>
 
-$M_i$ is 200 bits, splited into 4 bits windows obtaining a total of 50 windows. All the basis points goes through a variation when it comes to each window.
+$M_i$ is 200 bits, split into windows of 4 bits we get a total of 50 windows. All base points will go through a variation when dealing with each window.
 
 The first window will have the basis point $P_i$, the second window will have $2^5P_i$, so the $P$ will already have been added to it self 32 times. The third window will have $2^{10}P_i$, and so on so forth all the way to the 50th window.
 
-The bits $b_0, b_1, b_2, b_3$ will be used to determine a final coefficient for the basis, and happnes for each variation of the basis point itself.
+The bits $b_0, b_1, b_2, b_3$ will be used to determine a final coefficient for the basis, and it happens for each variation of the base point itself.
 
 $$
 \langle ... \rangle P_i \quad \langle ... \rangle 2^5P_i \quad \langle ... \rangle 2^{10}P_i \quad ...
@@ -109,11 +109,11 @@ $$
 \langle M_i \rangle P_i = enc(m_0) P_i \quad + \quad enc(m_1) 2^5P_i \quad + \quad enc(m_2) 2^{10}P_i \quad + \quad...
 $$
 
-$\langle M_i \rangle$ determines how many times a basis point $P_i$ will be added to itself or substract depending on the sign of the coefficient.
+$\langle M_i \rangle$ determines how many times a basis point $P_i$ will be added or subtracted to itself depending on the sign of the coefficient.
 
 We do this for each segment to reach the final point summing them all together.
 
-So we define the Pedersen hash of M as
+So we define the Pedersen hash of $M$ as:
 
 $$
 H(M) = \langle M_0 \rangle \cdot P_0 + \langle M_1 \rangle \cdot P_1 + \langle M_2 \rangle \cdot P_2 + ... + \langle M_l \rangle \cdot P_l
@@ -139,5 +139,3 @@ Into the main directory execute:
 ```
 $ bash run.sh
 ```
-
-### _Work in Progress..._
