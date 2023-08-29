@@ -88,12 +88,12 @@ $$
 
 - $(2b_3 - 1)$ determines the sign of the coefficient.
 
-  $
-  \begin{array}{l}
-  b_3 = 0, \quad 2b_3-1 = 0-1 \\
-  b_3 = 1, \quad 2b_3-1 = 1
-  \end{array}
-  $
+$$
+\begin{array}{l}
+    b_3 = 0, \quad 2b_3-1 = 0-1 \\
+    b_3 = 1, \quad 2b_3-1 = 1
+\end{array}
+$$
 
 - $(1 + b_0 + 2b_1 + 4b_2)$ This expression resolve a number from 1 to 8.
 
